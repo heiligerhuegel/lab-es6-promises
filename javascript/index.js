@@ -142,26 +142,10 @@ let p6 = obtainInstruction("brusselsSprouts", 6);
 let p7 = obtainInstruction("brusselsSprouts", 7);
 
 Promise.all([p1, p2, p3, p4, p5, p6, p7]).then((value) => {
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[0]}</li>`;
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[1]}</li>`;
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[2]}</li>`;
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[3]}</li>`;
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[4]}</li>`;
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[5]}</li>`;
-  document.querySelector(
-    "#brusselsSprouts"
-  ).innerHTML += `<li>${value[6]}</li>`;
+  value.forEach((element) => {
+    document.querySelector(
+      "#brusselsSprouts"
+    ).innerHTML += `<li>${element}</li>`;
+  });
   document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
 });
