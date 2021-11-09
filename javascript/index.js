@@ -94,6 +94,9 @@ obtainInstruction("steak", 0)
   .then((step7) => {
     document.querySelector("#steak").innerHTML += `<li>${step7}</li>`;
     document.querySelector("#steakImg").removeAttribute("hidden");
+  })
+  .catch((err) => {
+    console.error(err);
   });
 
 // Iteration 3 using async/await
@@ -132,20 +135,46 @@ makeBroccoli();
 // Bonus 2 - Promise all
 // ...
 
-let p0 = obtainInstruction("brusselsSprouts", 0);
-let p1 = obtainInstruction("brusselsSprouts", 1);
-let p2 = obtainInstruction("brusselsSprouts", 2);
-let p3 = obtainInstruction("brusselsSprouts", 3);
-let p4 = obtainInstruction("brusselsSprouts", 4);
-let p5 = obtainInstruction("brusselsSprouts", 5);
-let p6 = obtainInstruction("brusselsSprouts", 6);
-let p7 = obtainInstruction("brusselsSprouts", 7);
+// let p0 = obtainInstruction("brusselsSprouts", 0);
+// let p1 = obtainInstruction("brusselsSprouts", 1);
+// let p2 = obtainInstruction("brusselsSprouts", 2);
+// let p3 = obtainInstruction("brusselsSprouts", 3);
+// let p4 = obtainInstruction("brusselsSprouts", 4);
+// let p5 = obtainInstruction("brusselsSprouts", 5);
+// let p6 = obtainInstruction("brusselsSprouts", 6);
+// let p7 = obtainInstruction("brusselsSprouts", 7);
 
-Promise.all([p1, p2, p3, p4, p5, p6, p7]).then((value) => {
-  value.forEach((element) => {
+// Promise.all([p1, p2, p3, p4, p5, p6, p7])
+//   .then((value) => {
+//     value.forEach((element) => {
+//       document.querySelector(
+//         "#brusselsSprouts"
+//       ).innerHTML += `<li>${element}</li>`;
+//     });
+//     document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+async function makeBrusselsSprouts() {
+  let p0 = await obtainInstruction("brusselsSprouts", 0);
+  let p1 = await obtainInstruction("brusselsSprouts", 1);
+  let p2 = await obtainInstruction("brusselsSprouts", 2);
+  let p3 = await obtainInstruction("brusselsSprouts", 3);
+  let p4 = await obtainInstruction("brusselsSprouts", 4);
+  let p5 = await obtainInstruction("brusselsSprouts", 5);
+  let p6 = await obtainInstruction("brusselsSprouts", 6);
+  let p7 = await obtainInstruction("brusselsSprouts", 7);
+
+  const valuesArray = [p0, p1, p2, p3, p4, p5, p6, p7];
+
+  valuesArray.forEach((element) => {
     document.querySelector(
       "#brusselsSprouts"
     ).innerHTML += `<li>${element}</li>`;
   });
+
   document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
-});
+}
+makeBrusselsSprouts();
